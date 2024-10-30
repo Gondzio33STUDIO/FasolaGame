@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gondzio33 STUDIO - Strona Główna</title>
+    <title>Godnzio33 STUDIO - Strona Główna</title>
     
     <link rel="icon" href="ikona2.ico" type="image/x-icon">
 
@@ -95,27 +95,31 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .fasola-banner {
-            background-color: #fff;
+        .section {
             text-align: center;
             padding: 50px 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
             border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin: 20px 0;
             max-width: 800px;
             width: 90%;
         }
-        .fasola-banner h2 {
+
+        .section h2 {
             font-size: 36px;
             margin-bottom: 20px;
-            color: #333;
+            color: black; /* Zmiana koloru tekstu na czarny */
         }
+
         .fasola-banner p {
             font-size: 18px;
             margin-bottom: 30px;
             color: #555;
         }
-        .fasola-banner a {
+        
+        .fasola-banner a,
+        .opinie-banner a {
             text-decoration: none;
             background-color: #007bff;
             color: white;
@@ -124,7 +128,9 @@
             font-size: 18px;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .fasola-banner a:hover {
+
+        .fasola-banner a:hover,
+        .opinie-banner a:hover {
             background-color: #0056b3;
             transform: scale(1.05);
         }
@@ -224,6 +230,7 @@
 <nav>
     <a href="#about">O nas</a>
     <a href="#services">Usługi</a>
+    <a href="#opinie">Opinie</a>
     <a href="#gallery">Galeria</a>
     <a href="#contact">Kontakt</a>
 </nav>
@@ -232,10 +239,16 @@
     <h2>Tworzymy Twoją Przyszłość</h2>
 </section>
 
-<section id="services" class="fasola-banner">
+<section id="services" class="section fasola-banner">
     <h2>Fasola Game</h2>
     <p>Przygotuj się na niesamowitą przygodę z Fasola Game! Kliknij poniżej, aby dowiedzieć się więcej.</p>
     <a href="FasolaGame.html">Kliknij tutaj</a>
+</section>
+
+<section id="opinie" class="section opinie-banner">
+    <h2>Opinie</h2>
+    <p>Przeczytaj opinie naszych klientów lub dodaj własną!</p>
+    <a href="opinie.html">Zobacz opinie</a>
 </section>
 
 <section id="gallery" class="gallery">
@@ -258,10 +271,13 @@
     const isOffline = localStorage.getItem('siteOffline') === 'true';
 
     if (isOffline) {
-        window.location.href = '404.html'; // Przekierowanie na stronę 404
-    } else {
-        document.body.classList.add('loaded'); // Dodaj klasę po załadowaniu
+        window.location.href = '404.html'; // Przekierowanie na stronę 404.html
     }
+
+    // Animacja pojawiania się treści
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
 </script>
 
 </body>
