@@ -112,7 +112,8 @@
             color: black; /* Zmiana koloru tekstu na czarny */
         }
 
-        .fasola-banner p {
+        .fasola-banner p,
+        .opinie-banner p {
             font-size: 18px;
             margin-bottom: 30px;
             color: #555;
@@ -228,9 +229,9 @@
 </header>
 
 <nav>
+    <a href="#opinie">Opinie</a>
     <a href="#about">O nas</a>
     <a href="#services">Usługi</a>
-    <a href="#opinie">Opinie</a>
     <a href="#gallery">Galeria</a>
     <a href="#contact">Kontakt</a>
 </nav>
@@ -239,16 +240,16 @@
     <h2>Tworzymy Twoją Przyszłość</h2>
 </section>
 
-<section id="services" class="section fasola-banner">
-    <h2>Fasola Game</h2>
-    <p>Przygotuj się na niesamowitą przygodę z Fasola Game! Kliknij poniżej, aby dowiedzieć się więcej.</p>
-    <a href="FasolaGame.html">Kliknij tutaj</a>
-</section>
-
 <section id="opinie" class="section opinie-banner">
     <h2>Opinie</h2>
     <p>Przeczytaj opinie naszych klientów lub dodaj własną!</p>
     <a href="opinie.html">Zobacz opinie</a>
+</section>
+
+<section id="services" class="section fasola-banner">
+    <h2>Fasola Game</h2>
+    <p>Przygotuj się na niesamowitą przygodę z Fasola Game! Kliknij poniżej, aby dowiedzieć się więcej.</p>
+    <a href="FasolaGame.html">Kliknij tutaj</a>
 </section>
 
 <section id="gallery" class="gallery">
@@ -271,7 +272,8 @@
     const isOffline = localStorage.getItem('siteOffline') === 'true';
 
     if (isOffline) {
-        window.location.href = '404.html'; // Przekierowanie na stronę 404.html
+        // Przekierowanie na stronę 404.html
+        window.location.href = '404.html';
     }
 
     // Animacja pojawiania się treści
