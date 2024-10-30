@@ -9,6 +9,10 @@
     <link rel="icon" href="ikona2.ico" type="image/x-icon">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -26,29 +30,43 @@
         body.loaded {
             opacity: 1; /* Pokaż zawartość po załadowaniu */
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
         }
         header h1 {
             font-size: 40px;
             margin: 0;
+            text-transform: uppercase;
         }
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
         nav {
             text-align: center;
             margin: 20px 0;
+            position: relative;
+            z-index: 10;
         }
         nav a {
             text-decoration: none;
             color: #333;
             margin: 0 15px;
             font-size: 18px;
+            transition: color 0.3s ease;
         }
         nav a:hover {
             color: #007bff;
         }
+
         .hero {
             background-image: url('Galeria (4).png');
             background-size: cover;
@@ -58,16 +76,28 @@
             justify-content: center;
             align-items: center;
             color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
         }
         .hero h2 {
             color: red;
             font-size: 50px;
             margin: 0;
+            animation: fadeIn 1.5s ease forwards;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .fasola-banner {
             background-color: #f0f0f0;
             text-align: center;
             padding: 50px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
         }
         .fasola-banner h2 {
             font-size: 36px;
@@ -84,15 +114,20 @@
             padding: 15px 30px;
             border-radius: 5px;
             font-size: 18px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .fasola-banner a:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
+
         .gallery {
             text-align: center;
             padding: 50px 20px;
             background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
         }
         .gallery h2 {
             font-size: 36px;
@@ -102,19 +137,28 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
         }
         .gallery-images img {
-            margin: 10px;
             width: 300px;
             height: 200px;
             object-fit: cover;
             border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        .gallery-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
         footer {
             background-color: #333;
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
         footer p {
             margin: 5px 0;
@@ -123,9 +167,23 @@
         footer a {
             color: #007bff;
             text-decoration: none;
+            transition: text-decoration 0.3s ease;
         }
         footer a:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 30px;
+            }
+            .hero h2 {
+                font-size: 30px;
+            }
+            .gallery-images img {
+                width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
