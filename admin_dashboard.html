@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard Panelu Administracyjnego - Godnzio33 STUDIO</title>
+
+    <style>
+        /* Resetowanie stylów */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styl ogólny */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #444;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Styl nagłówka */
+        header {
+            background: linear-gradient(to right, #2c3e50, #34495e);
+            color: #ecf0f1;
+            padding: 20px 0;
+        }
+        header h1 {
+            font-size: 36px;
+        }
+
+        /* Styl dla przycisków */
+        .admin-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        .admin-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dashboard Panelu Administracyjnego</h1>
+</header>
+
+<button class="admin-button" id="toggle-site">Wyłącz stronę</button>
+<button class="admin-button" id="load-testimonials">Załaduj Opinie</button>
+<div class="testimonial-container">
+    <ul class="testimonial-list" id="testimonial-list"></ul>
+</div>
+
+<script>
+    // Funkcja do ładowania opinii
+    function loadTestimonials() {
+        const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+        const testimonialList = document.getElementById('testimonial-list');
+        testimonialList.innerHTML = ''; // Czyść listę przed dodaniem
+
+        testimonials.forEach((testimonial, index) => {
+            const li = document.createElement('li');
+            li.textContent = `${testimonial.name}: ${testimonial.opinion}`;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Usuń';
+            removeButton.className = 'remove-button';
+            removeButton.onclick = function() {
+                removeTestimonial(index);
+            };
+
+            li.appendChild(removeButton);
+            testimonialList.appendChild(li);
+        });
+    }
+
+    // Funkcja do usuwania opinii
+    function removeTestimonial(index) {
+        const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+        testimonials.splice(index, 1);
+        localStorage.setItem('testimonials', JSON.stringify(testimonials));
+        loadTestimonials();
+    }
+
+    // Przełączanie stanu strony
+    document.getElementById('toggle-site').addEventListener('click', function() {
+        const isOffline = localStorage.getItem('siteOffline') === 'true';
+        localStorage.setItem('siteOffline', !isOffline); // Przełącz stan offline
+        this.textContent = isOffline ? 'Wyłącz stronę' : 'Włącz stronę'; // Zmień tekst przycisku
+    });
+
+    // Załaduj opinie po kliknięciu w przycisk
+    document.getElementById('load-testimonials').addEventListener('click', loadTestimonials);
+</script>
+
+</body>
+</html>
