@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Godnzio33 STUDIO - Strona Główna</title>
     
-    <!-- Link do faviconu -->
-    <link rel="icon" href="ikona2.ico" type="image/x-icon"> <!-- Dodanie faviconu -->
+    <link rel="icon" href="ikona2.ico" type="image/x-icon">
 
     <style>
         body {
@@ -16,6 +15,16 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: opacity 0.5s ease;
+            opacity: 0; /* Ukryj zawartość */
+        }
+        body.loaded {
+            opacity: 1; /* Pokaż zawartość po załadowaniu */
         }
         header {
             background-color: #333;
@@ -27,101 +36,7 @@
             font-size: 40px;
             margin: 0;
         }
-        header p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        nav a:hover {
-            color: #007bff;
-        }
-        .hero {
-            background-image: url('Galeria (4).png');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
-        .hero h2 {
-            color: red;
-            font-size: 50px;
-            margin: 0;
-        }
-        .fasola-banner {
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .fasola-banner h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        .fasola-banner p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        .fasola-banner a {
-            text-decoration: none;
-            background-color: #007bff;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-        .fasola-banner a:hover {
-            background-color: #0056b3;
-        }
-        .gallery {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #f0f0f0;
-        }
-        .gallery h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-        }
-        .gallery-images {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .gallery-images img {
-            margin: 10px;
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        footer p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-        footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
+        /* Reszta stylów... */
     </style>
 </head>
 <body>
@@ -162,6 +77,17 @@
     <p>Email: <a href="mailto:kontakt@godnzio33studio.com">kontakt@godnzio33studio.com</a></p>
     <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a></p>
 </footer>
+
+<script>
+    // Sprawdź, czy strona jest wyłączona
+    const isOffline = localStorage.getItem('siteOffline') === 'true';
+
+    if (isOffline) {
+        window.location.href = '404.html'; // Przekierowanie na stronę 404
+    } else {
+        document.body.classList.add('loaded'); // Dodaj klasę po załadowaniu
+    }
+</script>
 
 </body>
 </html>
