@@ -1,286 +1,122 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Godnzio33 STUDIO - Strona Główna</title>
-    
-    <link rel="icon" href="ikona2.ico" type="image/x-icon">
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            transition: opacity 0.5s ease;
-            opacity: 0; /* Ukryj zawartość */
-        }
-        body.loaded {
-            opacity: 1; /* Pokaż zawartość po załadowaniu */
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            position: relative;
-            z-index: 10;
-        }
-        header h1 {
-            font-size: 42px;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        header p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        nav {
-            text-align: center;
-            margin: 20px 0;
-            position: relative;
-            z-index: 10;
-        }
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            margin: 0 15px;
-            font-size: 18px;
-            transition: color 0.3s ease;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-        nav a:hover {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .hero {
-            background-image: url('Galeria (4).png');
-            background-size: cover;
-            background-position: center;
-            height: 450px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            position: relative;
-            width: 100%;
-        }
-        .hero h2 {
-            font-size: 60px;
-            margin: 0;
-            animation: fadeIn 1.5s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            max-width: 800px;
-            width: 90%;
-        }
-
-        .section h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: black; /* Zmiana koloru tekstu na czarny */
-        }
-
-        .fasola-banner p,
-        .opinie-banner p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #555;
-        }
-        
-        .fasola-banner a,
-        .opinie-banner a {
-            text-decoration: none;
-            background-color: #007bff;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .fasola-banner a:hover,
-        .opinie-banner a:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        .gallery {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            max-width: 800px;
-            width: 90%;
-        }
-        .gallery h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            color: #333;
-        }
-        .gallery-images {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-        }
-        .gallery-images img {
-            width: calc(33.33% - 20px);
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .gallery-images img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-            position: relative;
-            z-index: 10;
-        }
-        footer p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-        footer a {
-            color: #007bff;
-            text-decoration: none;
-            transition: text-decoration 0.3s ease;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 32px;
-            }
-            .hero h2 {
-                font-size: 36px;
-            }
-            .gallery-images img {
-                width: calc(50% - 20px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 28px;
-            }
-            .hero h2 {
-                font-size: 28px;
-            }
-            nav a {
-                display: block;
-                margin: 10px 0;
-            }
-            .gallery-images img {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Godnzio33 STUDIO</h1>
-    <p>Kreatywne Studio z pasją</p>
-</header>
-
-<nav>
-    <a href="#opinie">Opinie</a>
-    <a href="#about">O nas</a>
-    <a href="#services">Usługi</a>
-    <a href="#gallery">Galeria</a>
-    <a href="#contact">Kontakt</a>
-</nav>
-
-<section class="hero">
-    <h2>Tworzymy Twoją Przyszłość</h2>
-</section>
-
-<section id="opinie" class="section opinie-banner">
-    <h2>Opinie</h2>
-    <p>Przeczytaj opinie naszych klientów lub dodaj własną!</p>
-    <a href="opinie.html">Zobacz opinie</a>
-</section>
-
-<section id="services" class="section fasola-banner">
-    <h2>Fasola Game</h2>
-    <p>Przygotuj się na niesamowitą przygodę z Fasola Game! Kliknij poniżej, aby dowiedzieć się więcej.</p>
-    <a href="FasolaGame.html">Kliknij tutaj</a>
-</section>
-
-<section id="gallery" class="gallery">
-    <h2>Galeria</h2>
-    <div class="gallery-images">
-        <img src="Galeria (1).png" alt="Galeria 1">
-        <img src="Galeria (2).png" alt="Galeria 2">
-        <img src="Galeria (3).png" alt="Galeria 3">
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Cookie Clicker</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Cookie Clicker</div>
+      </div>
     </div>
-</section>
+    <script>
 
-<footer id="contact">
-    <p>&copy; 2024 Godnzio33 STUDIO. Wszystkie prawa zastrzeżone.</p>
-    <p>Email: <a href="mailto:kontakt@godnzio33studio.com">kontakt@godnzio33studio.com</a></p>
-    <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a></p>
-</footer>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
 
-<script>
-    // Sprawdź, czy strona jest wyłączona
-    const isOffline = localStorage.getItem('siteOffline') === 'true';
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
 
-    if (isOffline) {
-        // Przekierowanie na stronę 404.html
-        window.location.href = '404.html';
-    }
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Strona.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Strona.data.gz",
+        frameworkUrl: buildUrl + "/Strona.framework.js.gz",
+        codeUrl: buildUrl + "/Strona.wasm.gz",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Gondzio33 STUDIO",
+        productName: "Cookie Clicker",
+        productVersion: "0.3",
+        showBanner: unityShowBanner,
+      };
 
-    // Animacja pojawiania się treści
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-    });
-</script>
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
 
-</body>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+        canvas.className = "unity-mobile";
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
+
+
+      } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+              }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                fullscreenButton.onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                };
+              }).catch((message) => {
+                alert(message);
+              });
+            };
+
+      document.body.appendChild(script);
+
+    </script>
+  </body>
 </html>
